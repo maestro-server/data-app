@@ -4,7 +4,7 @@ from app import app
 from pydash.objects import pick
 from flask_restful import Resource
 
-class DiscoveryApp(Resource):
+class HomeApp(Resource):
     """
     @api {get} / Ping
     @apiName GetPing

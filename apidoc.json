@@ -1,13 +1,13 @@
 {
-    "name": "API-Discovery Maestro - Providers Manager",
+    "name": "API-Data Maestro - Data Layer",
     "version": "0.2.0",
     "description": "API documentation - RestFull",
     "apidoc": {
-        "title": "API - Maestro Server - Discovery App",
+        "title": "API - Maestro Server - Data App",
         "url": "https://localhost:5000/apidocs/v1"
     },
     "order": [
         "Ping",
-        "Crawler"
+        "Data Layer"
     ]
 }

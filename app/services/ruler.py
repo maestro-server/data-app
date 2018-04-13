@@ -1,7 +1,6 @@
 import re
 from pydash.objects import get
 from app.repository.model import Model
-from app.services.iterators.iRuler import IteratorRuler
 import datetime
 
 
@@ -68,27 +67,3 @@ class Ruler(object):
     def switchOptions(source, batch):
         sts = get(batch, source['field'])
         return get(source['options'], sts, source['default'])
-
-    @staticmethod
-    def fctOwner(source, batch):
-        return {
-            'refs': 'connections',
-            'name': Ruler.switch('dc', source),
-            '_id': Ruler.switch('_id', source)
-        }
-
-    @staticmethod
-    def fctAuth(source, batch):
-        key = Ruler.switch(source, batch)
-
-        if key:
-            return [{'name': key, 'type': 'PKI'}]
-
-    @staticmethod
-    def fctRoles(source, batch):
-        return get(source, 'roles')
-
-    @staticmethod
-    def batch(source, batch):
-        items = source.items()
-        return IteratorRuler().batch(items=items, Ruler=Ruler, source=batch)

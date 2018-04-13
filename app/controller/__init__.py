@@ -1,8 +1,4 @@
-from .crawler import Crawler
-from .crawlerApp import CrawlerApps
-from .crawlerDcs import CrawlerDcs
-
-from .discovery import DiscoveryApp
+from .home import HomeApp
 from .connection import ConnectionApp
 from .dcServers import DcServersApp
 from .dcConnections import DcConnectionsApp

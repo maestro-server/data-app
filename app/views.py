@@ -12,9 +12,7 @@ from .controller import *
 
 api = Api(app)
 
-api.add_resource(DiscoveryApp, '/')
-api.add_resource(Crawler, '/crawler')
-api.add_resource(ConnectionApp, '/connection/<instance>', '/connection/<instance>/')
+api.add_resource(HomeApp, '/')
 
 api.add_resource(DcConnectionsApp, '/connections')
 api.add_resource(DcServersApp, '/servers')
@@ -33,9 +31,6 @@ api.add_resource(DcEventsApp, '/events')
 api.add_resource(DcDatacentersApp, '/datacenters')
 api.add_resource(DcReportsApp, '/reports')
 api.add_resource(AggregationApp, '/aggregate')
-
-api.add_resource(CrawlerDcs, '/crawler/<datacenter>', '/crawler/<datacenter>/')
-api.add_resource(CrawlerApps, '/crawler/<datacenter>/<instance>/<task>', '/crawler/<datacenter>/<instance>/<task>/')
 
 @app.errorhandler(404)
 def error(e):
