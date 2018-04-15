@@ -16,4 +16,5 @@ from .dcClients import DcClientsApp
 from .dcTeams import DcTeamsApp
 from .dcProjects import DcProjectsApp
 from .dcServices import DcServicesApp
+from .dcAdminer import DcAdminerApp
 from .aggregationApp import AggregationApp

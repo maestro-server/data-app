@@ -13,7 +13,9 @@ from .controller import *
 api = Api(app)
 
 api.add_resource(HomeApp, '/')
+api.add_resource(ConnectionApp, '/connections/<instance>', '/connection/<instance>', '/connection/<instance>/')
 
+api.add_resource(DcAdminerApp, '/adminer')
 api.add_resource(DcConnectionsApp, '/connections')
 api.add_resource(DcServersApp, '/servers')
 api.add_resource(DcApplicationApp, '/applications')

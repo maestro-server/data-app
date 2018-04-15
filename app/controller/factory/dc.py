@@ -7,17 +7,17 @@ from flask_restful import Resource
 from app.libs.deepUpdateForMongo import updaterIds
 from app.services.filter import FilterAPI
 from pydash import defaults, has, get, map_values_deep, omit
-from app.error.missingError import MissingError
+from app.error.factoryInvalid import FactoryInvalid
 
 class DcApp(Resource):
     def get(self):
         req = request.args.to_dict()
 
         if not has(req, 'query'):
-            return MissingError('id', 'Query params is needed'), 422
+            return FactoryInvalid.responseInvalid({'msg': 'Query params is needed'}, 422)
 
         if not has(req, 'query.roles._id'):
-            return MissingError('id', 'Must have owner id'), 422
+            return FactoryInvalid.responseInvalid({'msg': 'Must have owner id'}, 422)
 
         pagination = defaults(req, {'limit': os.environ.get("MAESTRO_SCAN_QTD", 200), 'page': 1})
         limit = int(pagination['limit'])
@@ -48,6 +48,7 @@ class DcApp(Resource):
         skip = (page - 1) * limit
 
         query = {}
+
         if has(req, 'query'):
             query = json.loads(req['query'])
 

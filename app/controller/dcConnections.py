@@ -2,14 +2,6 @@
 from app.controller.factory.dc import DcApp
 from app.repository import Connections
 
-import os,json
-from math import ceil
-from flask import request
-
-from app.services.filter import FilterAPI
-from pydash import defaults, has
-from app.error.missingError import MissingError
-
 class DcConnectionsApp(DcApp):
     """
     @api {get} /connections 1. Get all connections (GET)

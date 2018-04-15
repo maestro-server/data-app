@@ -3,7 +3,7 @@ import datetime
 from app import db
 from bson.objectid import ObjectId
 from pymongo import InsertOne, UpdateOne
-from app.error.missingError import MissingError
+from app.error.factoryInvalid import FactoryInvalid
 
 from pydash.objects import assign
 
@@ -29,7 +29,7 @@ class Model(object):
 
     def update(self, data):
         if not self.__id:
-            return MissingError('id', 'Id not setted'), 422
+            return FactoryInvalid.responseInvalid({'msg': 'Id not setted'}, 422)
 
         set = {'$set': data}
         result = self.col.update_one(Model.makeObjectId(self.__id), set)
