@@ -14,9 +14,6 @@ class DcFlavorsPublicApp(DcApp):
         <pre class="prettyprint language-json" data-type="json">
         <code>{
         <br/>   "query": {
-        <br/>       "roles": {
-        <br/>           "_id": (String) // Must be
-        <br/>       },
         <br/>       "limit": (Number)
         <br/>       "page": (Number)
         <br/>   }
@@ -61,9 +58,6 @@ class DcFlavorsPublicApp(DcApp):
         <pre class="prettyprint language-json" data-type="json">
         <code>{
         <br/>   "query": {
-        <br/>       "roles": {
-        <br/>           "_id": (String) // Must be
-        <br/>       },
         <br/>       "limit": (Number)
         <br/>       "page": (Number)
         <br/>   }
