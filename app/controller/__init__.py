@@ -10,6 +10,7 @@ from .dcImages import DcImagesApp
 from .dcNetwork import DcNetworkApp
 from .dcSnapshots import DcSnapshotsApp
 from .dcFlavors import DcFlavorsApp
+from .dcFlavorsPublic import DcFlavorsPublicApp
 from .dcEvents import DcEventsApp
 from .dcReports import DcReportsApp
 from .dcClients import DcClientsApp

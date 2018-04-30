@@ -10,6 +10,7 @@ from .images import Images
 from .networks import Networks
 from .snapshots import Snapshots
 from .flavors import Flavors
+from .flavorsPublic import FlavorsPublic
 from .events import Events
 from .reports import Reports
 from .aggregate import Aggregate
