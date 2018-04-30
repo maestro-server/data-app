@@ -6,8 +6,8 @@ class DcFlavorsPublicApp(DcApp):
     def __init__(self):
         """
         @api {get} /flavors_public 1. Get all flavors (GET)
-        @apiName GetFlavors
-        @apiGroup Flavors
+        @apiName GetFlavorsPublic
+        @apiGroup PublicFlavors
 
         @apiParam {Object} query Filters.
         <br/>
@@ -52,8 +52,8 @@ class DcFlavorsPublicApp(DcApp):
 
         """
         @api {post} /flavors_public 2. Get all flavors (POST)
-        @apiName PostFlavors
-        @apiGroup Flavors
+        @apiName PublicPostFlavors
+        @apiGroup FlavorsPublic
         @apiDescription Look like te same of get action, if you need to do a long filters likes a list of ids, you can use this endpoint.
 
         @apiParam {Object} query Filters.
@@ -86,8 +86,8 @@ class DcFlavorsPublicApp(DcApp):
 
         """
         @api {put} /flavors_public 3. Create or edit a list of entities
-        @apiName PutFlavors
-        @apiGroup Flavors
+        @apiName PutFlavorsPublic
+        @apiGroup PublicFlavors
         @apiDescription Batch create or edit entities.
 
         @apiParam {Array} body List of batches data, if exist _id this item only be updated, otherwise will be created.
