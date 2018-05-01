@@ -9,8 +9,10 @@ from pydash.objects import assign
 
 class Model(object):
 
-    def __init__(self, id=None):
-        name = self.__class__.__name__.lower()
+    def __init__(self, id=None, name = None):
+        if name is None:
+            name = self.__class__.__name__.lower()
+
         self.col = db[name]
         self.__id = id
 
