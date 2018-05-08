@@ -1,33 +1,98 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/105fc88179e640d3b7433d24dec6d644)](https://www.codacy.com/app/maestro/discovery-api?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=maestro-server/discovery-api&amp;utm_campaign=Badge_Grade)
-[![Build Status](https://travis-ci.org/maestro-server/discovery-api.svg?branch=master)](https://travis-ci.org/maestro-server/discovery-api) 
-[![Maintainability](https://api.codeclimate.com/v1/badges/082edc45c4509b79f751/maintainability)](https://codeclimate.com/github/maestro-server/discovery-api/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/082edc45c4509b79f751/test_coverage)](https://codeclimate.com/github/maestro-server/discovery-api/test_coverage)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d8b11776962a4867a491c7a039c250ec)](https://www.codacy.com/app/maestro/data-app?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=maestro-server/data-app&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/maestro-server/data-app.svg?branch=master)](https://travis-ci.org/maestro-server/data-app)
+[![Maintainability](https://api.codeclimate.com/v1/badges/0d6930d08ca210a9e46e/maintainability)](https://codeclimate.com/github/maestro-server/data-app/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/0d6930d08ca210a9e46e/test_coverage)](https://codeclimate.com/github/maestro-server/data-app/test_coverage)
 
-# Maestro Server - Discovery API #
+# Maestro Server #
+
+Maestro Server is an open source software platform for management and discovery servers, apps and system for Hybrid IT. Can manage small and large environments, be able to visualize the latest multi-cloud environment state.
+
+### Demo ###
+To test out the demo, [Demo Online](http://demo.maestroserver.io "Demo Online")
+
+## Documentation ##
+* [UserGuide](http://docs.maestroserver.io/en/latest/userguide/cloud_inventory/inventory.html "User Guide")
+* [API Contract](https://maestro-server.github.io/data-app/ "API Contract")
+
+# Maestro Server - Data Layer API #
+
+Microservice data layer.
 
 Core API, organized by modules:
 
 * API Rest
-* Worker - Scan
-* Worker - Translate
-* Worker - Insert
+* Controller
+* Repository
+* Services
 
-## Dependencies ##
+## TechStack ##
 * Python <3.4
 * Flask
-* Celery
-* RabbitMq
-* Redis
+
+## Service relations ##
+None
 
 ## Setup #
-Create .env file, with:
 
-CELERY_BROKER_URL="amqp://localhost:5672"
-CELERYD_TASK_TIME_LIMIT=30
+#### Installation by docker ####
 
-MAESTRO_PORT=5000
-MAESTRO_MONGO_URI='localhost'
-MAESTRO_MONGO_DATABASE='maestro-client'
-MAESTRO_DISCOVERY_URL = 'http://localhost'
-MAESTRO_SECRETJWT='xxxx'
-MAESTRO_SCAN_QTD=200
+```bash
+version: '2'
+
+services:
+    data:
+        image: maestroserver/data-maestro
+        environment:
+            - "MAESTRO_MONGO_URI=mongodb"
+            - "MAESTRO_MONGO_DATABASE=maestro-client"
+```
+
+#### Dev Env ####
+
+Install pip dependences
+```bash
+pip install -r requeriments.txt
+```
+
+Run server
+```bash
+python -m flask run.py
+
+or
+
+FLASK_APP=run.py FLASK_DEBUG=1 flask run
+
+or 
+
+npm run server
+```
+
+Run all tests 
+```bash
+python -m unittest discover
+```
+
+Create doc
+```bash
+npm install
+apidoc -i app/controller/ -o docs/
+```
+
+### Env variables ###
+
+| Env Variables                | Example                  | Description                        |
+|------------------------------|--------------------------|------------------------------------|
+| MAESTRO_PORT                 | 5000                     | port used                          |
+| MAESTRO_GWORKERS             | 2 | DB string connection | Gunicorn multi process             |
+| MAESTRO_MONGO_URI            | localhost                | MongoDB URL                        |
+| MAESTRO_MONGO_DATABASE       | maestro-client           | Database name                      |
+| MAESTRO_SCAN_QTD             | 200                      | Prefetch limit                     |
+
+
+### Contribute ###
+
+Are you interested in developing Maestro Server, creating new features or extending them?
+
+We created a set of documentation, explaining how to set up your development environment, coding styles, standards, learn about the architecture and more. Welcome to the team and contribute with us.
+
+[See our developer guide](http://docs.maestroserver.io/en/latest/contrib.html)
