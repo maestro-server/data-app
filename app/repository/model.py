@@ -1,5 +1,5 @@
 
-import datetime
+import datetime, re
 from app import db
 from bson.objectid import ObjectId
 from pymongo import InsertOne, UpdateOne
@@ -43,18 +43,30 @@ class Model(object):
             obj = assign(item['data'], self.makeDateAt(key='updated_at'))
 
             if item['filter']:
-                cal = UpdateOne(item['filter'], {'$set': obj})
+                args = Model.reservedWordMongo(obj)
+                cal = UpdateOne(item['filter'], args)
             else:
                 obj = assign(self.makeDateAt(key='created_at'), item['data'])
                 cal = InsertOne(obj)
 
             requests.append(cal)
-
         result = self.col.bulk_write(requests)
         return result.bulk_api_result
 
     def makeDateAt(self, key):
         return {key: datetime.datetime.utcnow()}
+
+    @staticmethod
+    def reservedWordMongo(obj):
+        filter = {'$set': {}}
+        for key, item in obj.items():
+            if item:
+                if re.match(r"\$", key):
+                    filter[key] = item
+                else:
+                    filter['$set'][key] = item
+
+        return filter
 
     @staticmethod
     def makeObjectId(id):
