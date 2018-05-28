@@ -60,7 +60,7 @@ class Model(object):
     def reservedWordMongo(obj):
         filter = {'$set': {}}
         for key, item in obj.items():
-            if item:
+            if not item is None:
                 if re.match(r"\$", key):
                     filter[key] = item
                 else:
