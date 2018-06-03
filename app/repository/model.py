@@ -3,9 +3,9 @@ import re
 from app import db
 from bson.objectid import ObjectId
 from pymongo import InsertOne, UpdateOne
+from pydash.objects import assign
 from app.error.factoryInvalid import FactoryInvalid
 
-from pydash.objects import assign
 
 
 class Model(object):

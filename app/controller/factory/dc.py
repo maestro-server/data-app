@@ -1,4 +1,5 @@
-import os, json
+import os
+import json
 from math import ceil
 from flask import request
 from flask_restful import Resource

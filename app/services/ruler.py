@@ -1,7 +1,8 @@
 import re
+import datetime
 from pydash.objects import get
 from app.repository.model import Model
-import datetime
+
 
 
 class Ruler(object):
