@@ -1,6 +1,7 @@
 import unittest
 
 from app import app
+from app import views
 from dotenv import load_dotenv, find_dotenv
 
 load_dotenv(find_dotenv())
