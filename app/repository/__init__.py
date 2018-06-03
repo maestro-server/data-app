@@ -16,6 +16,6 @@ from .reports import Reports
 from .aggregate import Aggregate
 from .clients import Clients
 from .teams import Teams
-from.services import Services
+from .services import Services
 from .projects import Projects
 from .schedulers import Schedulers

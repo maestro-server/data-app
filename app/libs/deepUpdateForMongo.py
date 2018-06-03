@@ -1,5 +1,5 @@
-
 from app.services.ruler import Ruler
+
 
 def updaterIds(data, path):
     last = path[-1]

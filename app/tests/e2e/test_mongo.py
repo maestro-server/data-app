@@ -1,4 +1,3 @@
-
 import unittest
 
 from app import app
@@ -8,9 +7,6 @@ load_dotenv(find_dotenv())
 
 
 class MongoTests(unittest.TestCase):
-    ############################
-    #### setup and teardown ####
-    ############################
 
     # executed prior to each test
     def setUp(self):

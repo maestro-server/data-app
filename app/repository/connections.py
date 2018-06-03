@@ -1,5 +1,5 @@
-
 from .model import Model
+
 
 class Connections(Model):
     state = 'warning'
@@ -19,7 +19,7 @@ class Connections(Model):
     def markError(self, task):
         return self.markStatus('danger', task)
 
-    def updateState(self, msg = None):
+    def updateState(self, msg=None):
         path = 'process.%s' % self.task
         state = {'state': self.state, 'msg': msg}
         process = {path: state}

@@ -1,7 +1,7 @@
-
 from flask_restful import Resource
 from app.validate.connValidate import connValidate
 from app.repository import Connections
+
 
 class ConnectionApp(Resource):
     """

@@ -4,10 +4,9 @@ Python Routes
 Licence: GPLv3
 """
 
-from flask_restful import Api
 from app import app
+from flask_restful import Api
 from flask import jsonify
-
 from .controller import *
 
 api = Api(app)
@@ -35,6 +34,7 @@ api.add_resource(DcSchedulersApp, '/schedulers')
 api.add_resource(DcDatacentersApp, '/datacenters')
 api.add_resource(DcReportsApp, '/reports')
 api.add_resource(AggregationApp, '/aggregate')
+
 
 @app.errorhandler(404)
 def error(e):

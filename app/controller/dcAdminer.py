@@ -1,9 +1,8 @@
-
 from app.controller.factory.dc import DcApp
 from app.repository import Adminer
 
-class DcAdminerApp(DcApp):
 
+class DcAdminerApp(DcApp):
     def __init__(self):
         """
         @api {get} /adminer 1. Get all configs (GET)

@@ -1,7 +1,7 @@
 from flask_restful.reqparse import RequestParser
 
-class connValidate(object):
 
+class connValidate(object):
     def task_status(self, value):
         statuses = ["danger", "warning", "success"]
         if value in statuses:

@@ -1,5 +1,5 @@
-
-import datetime, re
+import datetime
+import re
 from app import db
 from bson.objectid import ObjectId
 from pymongo import InsertOne, UpdateOne
@@ -7,23 +7,23 @@ from app.error.factoryInvalid import FactoryInvalid
 
 from pydash.objects import assign
 
-class Model(object):
 
-    def __init__(self, id=None, name = None):
+class Model(object):
+    def __init__(self, id=None, name=None):
         if name is None:
             name = self.__class__.__name__.lower()
 
         self.col = db[name]
         self.__id = id
 
-    def getAll(self, filter = {}, limit = 10, skip = 0):
-        result = self.col.find(filter)\
-            .limit(limit)\
+    def getAll(self, filter={}, limit=10, skip=0):
+        result = self.col.find(filter) \
+            .limit(limit) \
             .skip(skip)
 
         return list(result)
 
-    def count(self, filter = {}):
+    def count(self, filter={}):
         return self.col.count(filter)
 
     def get(self):

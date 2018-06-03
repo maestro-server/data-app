@@ -1,6 +1,6 @@
-
 from app.controller.factory.dc import DcApp
 from app.repository import FlavorsPublic
+
 
 class DcFlavorsPublicApp(DcApp):
     def __init__(self):

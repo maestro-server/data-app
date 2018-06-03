@@ -1,5 +1,4 @@
-
-import os,json
+import os, json
 from math import ceil
 from flask import request
 from flask_restful import Resource
@@ -8,6 +7,7 @@ from app.libs.deepUpdateForMongo import updaterIds
 from app.services.filter import FilterAPI
 from pydash import defaults, has, get, map_values_deep, omit
 from app.error.factoryInvalid import FactoryInvalid
+
 
 class DcApp(Resource):
     def get(self):
@@ -22,7 +22,7 @@ class DcApp(Resource):
         pagination = defaults(req, {'limit': os.environ.get("MAESTRO_SCAN_QTD", 200), 'page': 1})
         limit = int(pagination['limit'])
         page = int(pagination['page'])
-        skip = (page-1) * limit
+        skip = (page - 1) * limit
 
         query = json.loads(req['query'])
 
@@ -39,7 +39,6 @@ class DcApp(Resource):
             'items': self.entity().getAll(args, limit, skip)
         }
 
-
     def post(self):
         req = request.get_json(force=True)
         pagination = defaults(req, {'limit': os.environ.get("MAESTRO_SCAN_QTD", 200), 'page': 1})
@@ -52,8 +51,8 @@ class DcApp(Resource):
         if has(req, 'query'):
             query = json.loads(req['query'])
 
-        args = FilterAPI()\
-            .addBatchFilters(query)\
+        args = FilterAPI() \
+            .addBatchFilters(query) \
             .make()
 
         count = self.entity().count(args)

@@ -1,6 +1,6 @@
-
 from app.controller.factory.dc import DcApp
 from app.repository import Connections
+
 
 class DcConnectionsApp(DcApp):
     """
@@ -98,5 +98,6 @@ class DcConnectionsApp(DcApp):
         'data': (Array)
     }]
     """
+
     def __init__(self):
         self.entity = Connections
