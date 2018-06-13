@@ -1,5 +1,5 @@
 from app.controller.factory.dc import DcApp
-from app.repository import Schedulers
+from app.repository.schedulers import Schedulers
 
 
 class DcSchedulersApp(DcApp):

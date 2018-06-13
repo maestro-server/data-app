@@ -1,5 +1,5 @@
 from app.controller.factory.dc import DcApp
-from app.repository import FlavorsPublic
+from app.repository.flavorsPublic import FlavorsPublic
 
 
 class DcFlavorsPublicApp(DcApp):

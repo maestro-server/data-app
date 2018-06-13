@@ -1,5 +1,5 @@
 from app.controller.factory.dc import DcApp
-from app.repository import Images
+from app.repository.images import Images
 
 
 class DcImagesApp(DcApp):

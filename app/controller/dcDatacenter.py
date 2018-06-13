@@ -1,5 +1,5 @@
 from app.controller.factory.dc import DcApp
-from app.repository import Datacenters
+from app.repository.datacenters import Datacenters
 
 
 class DcDatacentersApp(DcApp):

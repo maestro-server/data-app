@@ -14,12 +14,20 @@ class DcApp(Resource):
         req = request.args.to_dict()
 
         if not has(req, 'query'):
-            return FactoryInvalid.responseInvalid({'msg': 'Query params is needed'}, 422)
+            return FactoryInvalid.responseInvalid(
+                                                 {'msg': 'Query params is needed'},
+                                                 422)
 
         if not has(req, 'query.roles._id'):
-            return FactoryInvalid.responseInvalid({'msg': 'Must have owner id'}, 422)
+            return FactoryInvalid.responseInvalid(
+                                                 {'msg': 'Must have owner id'},
+                                                 422)
 
-        pagination = defaults(req, {'limit': os.environ.get("MAESTRO_SCAN_QTD", 200), 'page': 1})
+        pagination = defaults(
+                              req,
+                              {'limit': os.environ.get("MAESTRO_SCAN_QTD", 200),
+                              'page': 1})
+
         limit = int(pagination['limit'])
         page = int(pagination['page'])
         skip = (page - 1) * limit
@@ -41,7 +49,11 @@ class DcApp(Resource):
 
     def post(self):
         req = request.get_json(force=True)
-        pagination = defaults(req, {'limit': os.environ.get("MAESTRO_SCAN_QTD", 200), 'page': 1})
+        pagination = defaults(
+                              req,
+                              {'limit': os.environ.get("MAESTRO_SCAN_QTD", 200),
+                              'page': 1})
+
         limit = int(pagination['limit'])
         page = int(pagination['page'])
         skip = (page - 1) * limit

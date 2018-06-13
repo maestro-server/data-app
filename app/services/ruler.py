@@ -3,7 +3,6 @@ import datetime
 from app.repository.model import Model
 
 
-
 class Ruler(object):
     @staticmethod
     def searchID(key, rule):
@@ -31,7 +30,9 @@ class Ruler(object):
     @staticmethod
     def makeDatetime(rule):
         if type(rule) is str:
-            return datetime.datetime.strptime(rule[:19] + "Z", "%Y-%m-%dT%H:%M:%SZ")
+            return datetime.datetime.strptime(
+                                              rule[:19] + "Z",
+                                              "%Y-%m-%dT%H:%M:%SZ")
 
     @staticmethod
     def makeObjectId(key, rule):

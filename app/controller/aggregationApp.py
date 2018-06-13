@@ -1,7 +1,7 @@
 import json
 from flask_restful import Resource
 from pydash import map_values_deep, has
-from app.repository import Aggregate
+from app.repository.aggregate import Aggregate
 from app.libs.deepUpdateForMongo import updaterIds
 from app.error.factoryInvalid import FactoryInvalid
 from app.validate.aggregateValidate import aggregateValidate

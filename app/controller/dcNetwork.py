@@ -1,5 +1,5 @@
 from app.controller.factory.dc import DcApp
-from app.repository import Networks
+from app.repository.networks import Networks
 
 
 class DcNetworkApp(DcApp):

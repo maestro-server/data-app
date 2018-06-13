@@ -1,5 +1,5 @@
 from app.controller.factory.dc import DcApp
-from app.repository import Clients
+from app.repository.clients import Clients
 
 
 class DcClientsApp(DcApp):

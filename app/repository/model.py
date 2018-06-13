@@ -6,7 +6,6 @@ from pymongo import InsertOne, UpdateOne
 from app.error.factoryInvalid import FactoryInvalid
 
 
-
 class Model(object):
     def __init__(self, id=None, name=None):
         if name is None:
@@ -30,7 +29,9 @@ class Model(object):
 
     def update(self, data):
         if not self.__id:
-            return FactoryInvalid.responseInvalid({'msg': 'Id not setted'}, 422)
+            return FactoryInvalid.responseInvalid(
+                {'msg': 'Id not setted'},
+                422)
 
         set = {'$set': data}
         result = self.col.update_one(Model.makeObjectId(self.__id), set)
@@ -59,7 +60,7 @@ class Model(object):
     def reservedWordMongo(obj):
         filter = {'$set': {}}
         for key, item in obj.items():
-            if not item is None:
+            if item is not None:
                 if re.match(r"\$", key):
                     filter[key] = item
                 else:

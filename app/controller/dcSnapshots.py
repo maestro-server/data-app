@@ -1,5 +1,5 @@
 from app.controller.factory.dc import DcApp
-from app.repository import Snapshots
+from app.repository.snapshots import Snapshots
 
 
 class DcSnapshotsApp(DcApp):

@@ -1,5 +1,5 @@
 from app.controller.factory.dc import DcApp
-from app.repository import Applications
+from app.repository.applications import Applications
 
 
 class DcApplicationApp(DcApp):

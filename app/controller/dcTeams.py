@@ -1,5 +1,5 @@
 from app.controller.factory.dc import DcApp
-from app.repository import Teams
+from app.repository.teams import Teams
 
 
 class DcTeamsApp(DcApp):

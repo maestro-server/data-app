@@ -1,5 +1,5 @@
 from app.controller.factory.dc import DcApp
-from app.repository import Events
+from app.repository.events import Events
 
 
 class DcEventsApp(DcApp):

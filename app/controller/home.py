@@ -1,7 +1,7 @@
 import os
 import json
 from app import app
-from pydash.objects import pick
+from pydash import pick
 from flask_restful import Resource
 
 
