@@ -3,7 +3,6 @@ import re
 from app import db
 from bson.objectid import ObjectId
 from pymongo import InsertOne, UpdateOne
-from pydash.objects import assign
 from app.error.factoryInvalid import FactoryInvalid
 
 
@@ -40,13 +39,13 @@ class Model(object):
     def batch_process(self, data):
         requests = []
         for item in data:
-            obj = assign(item['data'], self.makeDateAt(key='updated_at'))
+            obj = {**item['data'], **self.makeDateAt(key='updated_at')}
 
             if item['filter']:
                 args = Model.reservedWordMongo(obj)
                 cal = UpdateOne(item['filter'], args)
             else:
-                obj = assign(self.makeDateAt(key='created_at'), item['data'])
+                obj = {**self.makeDateAt(key='created_at'), **item['data']}
                 cal = InsertOne(obj)
 
             requests.append(cal)

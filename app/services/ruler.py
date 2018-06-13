@@ -1,6 +1,5 @@
 import re
 import datetime
-from pydash.objects import get
 from app.repository.model import Model
 
 
@@ -55,4 +54,4 @@ class Ruler(object):
 
     @staticmethod
     def switch(source, batch, default=None):
-        return get(batch, source, default)
+        return batch.get(source, default)

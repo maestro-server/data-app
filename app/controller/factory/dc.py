@@ -3,10 +3,9 @@ import json
 from math import ceil
 from flask import request
 from flask_restful import Resource
-
+from pydash import defaults, has, map_values_deep, omit
 from app.libs.deepUpdateForMongo import updaterIds
 from app.services.filter import FilterAPI
-from pydash import defaults, has, get, map_values_deep, omit
 from app.error.factoryInvalid import FactoryInvalid
 
 
@@ -71,7 +70,7 @@ class DcApp(Resource):
         format = []
 
         for item in data['body']:
-            id = get(item, '_id')
+            id = item.get('_id')
             id = self.entity().makeObjectId(id)
 
             item = omit(item, ['_id', 'updated_at'])

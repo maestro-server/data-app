@@ -1,4 +1,4 @@
-from pydash.objects import defaults, get, merge
+from pydash.objects import defaults, merge
 from app.services.ruler import Ruler
 
 
@@ -28,7 +28,7 @@ class FilterAPI(object):
         return self
 
     def get(self, key):
-        return get(self.__filter, key)
+        return self.__filter.get(key)
 
     def make(self):
         return self.__filter
