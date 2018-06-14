@@ -6,7 +6,6 @@ from flask_restful import Resource
 
 
 class HomeApp(Resource):
-
     # @api {get} / Ping
     # @apiName GetPing
     # @apiGroup Ping
@@ -18,8 +17,6 @@ class HomeApp(Resource):
     #    description: (String)
     #    version: (String)
     # }
-
-
     def get(self):
         root_path = os.path.join(app.root_path, '..')
 

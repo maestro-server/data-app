@@ -3,7 +3,6 @@ from app.repository.connections import Connections
 
 
 class DcConnectionsApp(DcApp):
-
     # @api {get} /connections 1. Get all connections (GET)
     # @apiName GetConnections
     # @apiGroup Connections
@@ -97,7 +96,5 @@ class DcConnectionsApp(DcApp):
     #     'filter': (Object),
     #     'data': (Array)
     # }]
-
-
     def __init__(self):
         self.entity = Connections

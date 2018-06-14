@@ -79,17 +79,17 @@ class DcApp(Resource):
     def put(self):
         data = request.get_json(force=True)
 
-        format = []
+        objToPut = []
 
         for item in data['body']:
-            id = item.get('_id')
-            id = self.entity().makeObjectId(id)
+            objId = item.get('_id')
+            objId = self.entity().makeObjectId(objId)
 
             item = omit(item, ['_id', 'updated_at'])
             item = map_values_deep(item, updaterIds)
 
-            format.append({
-                'filter': id,
+            objToPut.append({
+                'filter': objId,
                 'data': item
             })
-        return self.entity().batch_process(format)
+        return self.entity().batch_process(objToPut)

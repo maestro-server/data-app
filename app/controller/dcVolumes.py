@@ -97,7 +97,5 @@ class DcVolumesApp(DcApp):
     #     'filter': (Object),
     #     'data': (Array)
     # }]
-
-
     def __init__(self):
         self.entity = Volumes

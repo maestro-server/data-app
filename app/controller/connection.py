@@ -21,7 +21,6 @@ class ConnectionApp(Resource):
     def get(self, instance):
         return Connections(instance).get()
 
-
     # @api {post} /connection/<instance> 2. Change connection state
     # @apiName PostConnection
     # @apiGroup Connection
