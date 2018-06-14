@@ -21,3 +21,4 @@ exclude_paths:
 - docs/
 - bin/
 - node_modules/
+- include/
