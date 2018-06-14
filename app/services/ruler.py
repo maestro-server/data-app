@@ -18,12 +18,18 @@ class Ruler(object):
         time = re.search('_at', key)
 
         if time and rule:
-            if isinstance(rule, dict):
-                for k, v in rule.items():
-                    rule[k] = Ruler.makeDatetime(v)
+            rule = Ruler.enumSearchAt(rule)
 
-            if isinstance(rule, str):
-                rule = Ruler.makeDatetime(rule)
+        return rule
+
+    @staticmethod   
+    def enumSearchAt(rule):
+        if isinstance(rule, dict):
+            for k, v in rule.items():
+                rule[k] = Ruler.makeDatetime(v)
+
+        if isinstance(rule, str):
+            rule = Ruler.makeDatetime(rule)
 
         return rule
 
