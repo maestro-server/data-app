@@ -1,13 +1,16 @@
 import datetime
 import json
 from bson import ObjectId, timestamp
-
+from app.libs.logger import logger
 
 class DateTimeEncoder(json.JSONEncoder):
     def default(self, obj):
         val = None
 
-        if isinstance(obj, ObjectId) or isinstance(obj, timestamp.Timestamp):
+        if isinstance(obj, ObjectId):
+            val = str(obj)
+
+        if isinstance(obj, timestamp.Timestamp):
             val = str(obj)
 
         if isinstance(obj, (datetime.datetime, datetime.date, datetime.time)):
@@ -17,7 +20,10 @@ class DateTimeEncoder(json.JSONEncoder):
             val = (datetime.datetime.min + obj).time().isoformat()
 
         if isinstance(obj, (bytes, bytearray)):
-            val = obj.decode()
+            try:
+                val = obj.decode('utf-8')
+            except Exception as err:
+                return logger.error("==================================> Decode is not utf-8 - $s", str(err))
 
         if val is None:
             val = json.JSONEncoder.default(self, obj)
