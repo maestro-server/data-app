@@ -16,6 +16,9 @@ class DateTimeEncoder(json.JSONEncoder):
         if isinstance(obj, datetime.timedelta):
             val = (datetime.datetime.min + obj).time().isoformat()
 
+        if isinstance(obj, (bytes, bytearray)):
+            val = obj.decode()
+
         if val is None:
             val = json.JSONEncoder.default(self, obj)
 
