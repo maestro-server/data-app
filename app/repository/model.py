@@ -6,7 +6,6 @@ from pymongo import InsertOne, UpdateOne
 from app.error.factoryInvalid import FactoryInvalid
 
 
-
 class Model(object):
     def __init__(self, id=None, name=None):
         if name is None:
