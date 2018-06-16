@@ -23,7 +23,7 @@ class DateTimeEncoder(json.JSONEncoder):
             try:
                 val = obj.decode('utf-8')
             except Exception as err:
-                logger.error("==================================> Decode is not utf-8 - %s", str(err))
+                logger.error("==================================> Decode is not utf-8")
                 return
 
         if val is None:
