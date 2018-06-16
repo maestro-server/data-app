@@ -29,36 +29,39 @@ class Model(object):
 
     def update(self, data):
         if not self.__id:
-            return FactoryInvalid.responseInvalid({'msg': 'Id not setted'}, 422)
+            return FactoryInvalid.responseInvalid(
+                {'msg': 'Id not setted'},
+                422)
 
-        set = {'$set': data}
-        result = self.col.update_one(Model.makeObjectId(self.__id), set)
+        setUpdatedData = {'$set': data}
+        result = self.col.update_one(Model.makeObjectId(self.__id), setUpdatedData)
         return result.raw_result
 
     def batch_process(self, data):
         requests = []
         for item in data:
-            obj = {**item['data'], **self.makeDateAt(key='updated_at')}
+            obj = {**item['data'], **Model.makeDateAt(key='updated_at')}
 
             if item['filter']:
                 args = Model.reservedWordMongo(obj)
                 cal = UpdateOne(item['filter'], args)
             else:
-                obj = {**self.makeDateAt(key='created_at'), **item['data']}
+                obj = {**Model.makeDateAt(key='created_at'), **item['data']}
                 cal = InsertOne(obj)
 
             requests.append(cal)
         result = self.col.bulk_write(requests)
         return result.bulk_api_result
 
-    def makeDateAt(self, key):
+    @staticmethod
+    def makeDateAt(key):
         return {key: datetime.datetime.utcnow()}
 
     @staticmethod
     def reservedWordMongo(obj):
         filter = {'$set': {}}
         for key, item in obj.items():
-            if not item is None:
+            if item is not None:
                 if re.match(r"\$", key):
                     filter[key] = item
                 else:

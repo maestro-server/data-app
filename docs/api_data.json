@@ -98,45 +98,6 @@
     "groupTitle": "Adminer"
   },
   {
-    "type": "post",
-    "url": "/aggregate>",
-    "title": "1. Execute aggregate query",
-    "name": "PostAggregate",
-    "group": "Aggregate",
-    "parameter": {
-      "fields": {
-        "Body x-www": [
-          {
-            "group": "Body x-www",
-            "type": "String",
-            "optional": false,
-            "field": "entity",
-            "description": "<p>Table name (Ex. server, applications, clients, system)</p>"
-          },
-          {
-            "group": "Body x-www",
-            "type": "Json",
-            "optional": false,
-            "field": "query",
-            "description": "<p>Aggregation query (See, mongodb aggregate for more information)</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n{\n    'items': [\n        {\n        }\n    ]\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "app/controller/aggregationApp.py",
-    "groupTitle": "Aggregate"
-  },
-  {
     "type": "get",
     "url": "/applications",
     "title": "1. Get all applications (GET)",
@@ -331,93 +292,6 @@
     "version": "0.0.0",
     "filename": "app/controller/dcClients.py",
     "groupTitle": "Clients"
-  },
-  {
-    "type": "get",
-    "url": "/connection/<instance>",
-    "title": "1. Get single connection",
-    "name": "GetConnection",
-    "group": "Connection",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
-            "field": "instance",
-            "description": "<p>Instance ID of connection.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n[{\n    'name': (Number)\n}]",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "app/controller/connection.py",
-    "groupTitle": "Connection"
-  },
-  {
-    "type": "post",
-    "url": "/connection/<instance>",
-    "title": "2. Change connection state",
-    "name": "PostConnection",
-    "group": "Connection",
-    "parameter": {
-      "fields": {
-        "Query": [
-          {
-            "group": "Query",
-            "type": "String",
-            "optional": false,
-            "field": "instance",
-            "description": "<p>Instance ID of connection.</p>"
-          }
-        ],
-        "Body x-www": [
-          {
-            "group": "Body x-www",
-            "type": "String",
-            "optional": false,
-            "field": "status",
-            "description": "<p>Status [Sucess, warning, error]</p>"
-          },
-          {
-            "group": "Body x-www",
-            "type": "String",
-            "optional": false,
-            "field": "task",
-            "description": "<p>Specific task [server-list, dbs-list and etc]</p>"
-          },
-          {
-            "group": "Body x-www",
-            "type": "String",
-            "optional": false,
-            "field": "msg",
-            "description": "<p>Message</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "HTTP/1.1 200 OK\n[{\n    'name': (string),\n    'status': (string) [sucess, warning or error]\n    'task': (string)\n}]",
-          "type": "json"
-        }
-      ]
-    },
-    "version": "0.0.0",
-    "filename": "app/controller/connection.py",
-    "groupTitle": "Connection"
   },
   {
     "type": "get",
@@ -793,7 +667,7 @@
             "type": "Object",
             "optional": false,
             "field": "query",
-            "description": "<p>Filters. <br/> <pre class=\"prettyprint language-json\" data-type=\"json\"> <code>{ <br/>   &quot;query&quot;: { <br/>       &quot;roles&quot;: { <br/>           &quot;_id&quot;: (String) // Must be <br/>       }, <br/>       &quot;limit&quot;: (Number) <br/>       &quot;page&quot;: (Number) <br/>   } <br/>} </code> </pre></p> <pre><code>    query.roles._id Must be required.</code></pre>"
+            "description": "<p>Filters. <br/> <pre class=\"prettyprint language-json\" data-type=\"json\"> <code>{ <br/>   &quot;query&quot;: { <br/>       &quot;limit&quot;: (Number) <br/>       &quot;page&quot;: (Number) <br/>   } <br/>} </code> </pre></p> <pre><code>    query.roles._id Must be required.</code></pre>"
           }
         ]
       }
@@ -1105,7 +979,7 @@
             "type": "Object",
             "optional": false,
             "field": "query",
-            "description": "<p>Filters. <br/> <pre class=\"prettyprint language-json\" data-type=\"json\"> <code>{ <br/>   &quot;query&quot;: { <br/>       &quot;roles&quot;: { <br/>           &quot;_id&quot;: (String) // Must be <br/>       }, <br/>       &quot;limit&quot;: (Number) <br/>       &quot;page&quot;: (Number) <br/>   } <br/>} <br/><br/> // You can use any field do filters <br/>{ <br/>   &quot;query&quot;: { <br/>       &quot;roles&quot;: { <br/>           &quot;_id&quot;: (String) // Must be <br/>       }, <br/>       &quot;_id&quot;: (String) <br/>       &quot;name&quot;: (String) <br/>       &quot;limit&quot;: (Number) <br/>       &quot;page&quot;: (Number) <br/>   } <br/>} </code> </pre></p> <pre><code>    query.roles._id Must be required.</code></pre>"
+            "description": "<p>Filters. <br/> <pre class=\"prettyprint language-json\" data-type=\"json\"> <code>{ <br/>   &quot;query&quot;: { <br/>       &quot;limit&quot;: (Number) <br/>       &quot;page&quot;: (Number) <br/>   } <br/>} <br/><br/> // You can use any field do filters <br/>{ <br/>   &quot;query&quot;: { <br/>       &quot;roles&quot;: { <br/>           &quot;_id&quot;: (String) // Must be <br/>       }, <br/>       &quot;_id&quot;: (String) <br/>       &quot;name&quot;: (String) <br/>       &quot;limit&quot;: (Number) <br/>       &quot;page&quot;: (Number) <br/>   } <br/>} </code> </pre></p> <pre><code>    query.roles._id Must be required.</code></pre>"
           }
         ]
       }

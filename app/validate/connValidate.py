@@ -9,8 +9,19 @@ class connValidate(object):
 
     def validate(self):
         valid = RequestParser(bundle_errors=True)
-        valid.add_argument("msg", type=str, required=True)
-        valid.add_argument("status", required=True, type=self.task_status, help="Use danger, warning or success")
-        valid.add_argument("task", required=True)
+        valid.add_argument(
+            "msg",
+            type=str,
+            required=True)
+
+        valid.add_argument(
+            "status",
+            required=True,
+            type=self.task_status,
+            help="Use danger, warning or success")
+
+        valid.add_argument(
+            "task",
+            required=True)
 
         return valid.parse_args()

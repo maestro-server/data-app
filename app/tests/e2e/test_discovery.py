@@ -7,9 +7,6 @@ load_dotenv(find_dotenv())
 
 
 class DiscoveryTests(unittest.TestCase):
-    ############################
-    #### setup and teardown ####
-    ############################
 
     # executed prior to each test
     def setUp(self):

@@ -3,7 +3,6 @@ import datetime
 from app.repository.model import Model
 
 
-
 class Ruler(object):
     @staticmethod
     def searchID(key, rule):
@@ -19,19 +18,27 @@ class Ruler(object):
         time = re.search('_at', key)
 
         if time and rule:
-            if isinstance(rule, dict):
-                for k, v in rule.items():
-                    rule[k] = Ruler.makeDatetime(v)
+            rule = Ruler.enumSearchAt(rule)
 
-            if isinstance(rule, str):
-                rule = Ruler.makeDatetime(rule)
+        return rule
+
+    @staticmethod   
+    def enumSearchAt(rule):
+        if isinstance(rule, dict):
+            for k, v in rule.items():
+                rule[k] = Ruler.makeDatetime(v)
+
+        if isinstance(rule, str):
+            rule = Ruler.makeDatetime(rule)
 
         return rule
 
     @staticmethod
     def makeDatetime(rule):
         if type(rule) is str:
-            return datetime.datetime.strptime(rule[:19] + "Z", "%Y-%m-%dT%H:%M:%SZ")
+            return datetime.datetime.strptime(
+                                              rule[:19] + "Z",
+                                              "%Y-%m-%dT%H:%M:%SZ")
 
     @staticmethod
     def makeObjectId(key, rule):
