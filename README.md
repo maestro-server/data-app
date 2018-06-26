@@ -83,7 +83,7 @@ apidoc -i app/controller/ -o docs/
 
 | Env Variables                | Example                  | Description                        |
 |------------------------------|--------------------------|------------------------------------|
-| MAESTRO_PORT                 | 5000                     | port used                          |
+| MAESTRO_PORT                 | 5010                     | port used                          |
 | MAESTRO_GWORKERS             | 2 | DB string connection | Gunicorn multi process             |
 | MAESTRO_MONGO_URI            | localhost                | MongoDB URL                        |
 | MAESTRO_MONGO_DATABASE       | maestro-client           | Database name                      |
