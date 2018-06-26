@@ -15,6 +15,11 @@ app.config.from_object('instance.config.Config')
 client = MongoClient(app.config['DATABASE_URI'], serverSelectionTimeoutMS=1)
 db = client[app.config['DATABASE_NAME']]
 
+if __name__ != '__main__':
+    gunicorn_logger = logger.getLogger('gunicorn.error')
+    app.logger.handlers = gunicorn_logger.handlers
+    app.logger.setLevel(gunicorn_logger.level)
+    
 try:
     client.server_info()
     logger.info("Mongo Online")
