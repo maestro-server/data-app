@@ -40,7 +40,6 @@ class AggregationApp(Resource):
                     {'msg': 'Must delimite $match which roles._id ($match {role.id})'}, 422)
 
             args = map_values_deep(pipeline, updaterIds)
-
             return {
                 'items': Aggregate(entity).pipeline(args)
             }
