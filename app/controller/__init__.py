@@ -18,5 +18,6 @@ from .dcTeams import DcTeamsApp
 from .dcProjects import DcProjectsApp
 from .dcServices import DcServicesApp
 from .dcAdminer import DcAdminerApp
+from .dcGraphs import DcGraphsApp
 from .dcSchedulers import DcSchedulersApp
 from .aggregationApp import AggregationApp
