@@ -37,6 +37,11 @@ class Model(object):
         result = self.col.update_one(Model.makeObjectId(self.__id), setUpdatedData)
         return result.raw_result
 
+    def updateMany(self, filters, data):
+        setUpdatedData = {'$set': data}
+        result = self.col.update_many(filters, setUpdatedData)
+        return result.raw_result
+
     def batch_process(self, data):
         requests = []
         for item in data:
