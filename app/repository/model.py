@@ -45,13 +45,13 @@ class Model(object):
     def batch_process(self, data):
         requests = []
         for item in data:
-            obj = {**item['data'], **Model.makeDateAt(key='updated_at')}
-
+            obj = {**Model.makeDateAt(key='updated_at'), **item['data']}
+            
             if item['filter']:
                 args = Model.reservedWordMongo(obj)
                 cal = UpdateOne(item['filter'], args)
             else:
-                obj = {**Model.makeDateAt(key='created_at'), **item['data']}
+                obj = {**Model.makeDateAt(key='created_at'), **obj}
                 cal = InsertOne(obj)
 
             requests.append(cal)
