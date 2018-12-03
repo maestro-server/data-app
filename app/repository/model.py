@@ -3,6 +3,7 @@ import re
 from app import db
 from bson.objectid import ObjectId
 from pymongo import InsertOne, UpdateOne
+from pymongo.errors import BulkWriteError
 from app.error.factoryInvalid import FactoryInvalid
 
 
@@ -55,7 +56,13 @@ class Model(object):
                 cal = InsertOne(obj)
 
             requests.append(cal)
-        result = self.col.bulk_write(requests)
+
+        try:
+            result = self.col.bulk_write(requests)
+        except BulkWriteError as bwe:
+            print(bwe.details)
+            raise
+
         return result.bulk_api_result
 
     @staticmethod
