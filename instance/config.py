@@ -17,6 +17,9 @@ class Config(object):
     DATABASE_NAME = os.environ.get("MAESTRO_MONGO_DATABASE", "maestro-client")
     RESTFUL_JSON = {'cls': DateTimeEncoder}
 
+    SECRETJWT_PRIVATE = os.environ.get("MAESTRO_SECRETJWT_PRIVATE", "defaultSecretKeyPrivate")
+    NOAUTH = os.environ.get("MAESTRO_NOAUTH", "defaultSecretNoAuthToken")
+
 
 class ProductionConfig(Config):
     pass

@@ -1,9 +1,7 @@
-import os
-import json
-from app import app
-from pydash import pick
-from flask_restful import Resource
 
+from app import app
+from flask_restful import Resource
+from app.libs.appInfo import appInfo
 
 class HomeApp(Resource):
     # @api {get} / Ping
@@ -18,11 +16,4 @@ class HomeApp(Resource):
     #    version: (String)
     # }
     def get(self):
-        root_path = os.path.join(app.root_path, '..')
-
-        file = open(root_path + '/package.json')
-        json_data = file.read()
-        data = json.loads(json_data)
-
-        file.close()
-        return pick(data, ['name', 'provider', 'description', 'version', 'license'])
+        return appInfo()

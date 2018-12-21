@@ -5,6 +5,7 @@ from app.libs.deepUpdateForMongo import updaterIds
 from app.repository.model import Model
 from app.error.factoryInvalid import FactoryInvalid
 from app.validate.syncValidate import syncValidate
+from app.decorators.private_auth import private_auth
 
 
 class SyncApp(Resource):
@@ -13,9 +14,19 @@ class SyncApp(Resource):
     # @apiName PostSync
     # @apiGroup Sync
 
-    # @apiParam (Body x-www) {Object} query Filter query
+    # @apiParam (Body x-www) {Json} query Filter query
     # @apiParam (Body x-www) {Json} body Update data
     # @apiParam (Body x-www) {Str} entity Collection name. (servers, applications)
+
+    # <br/>
+    # Example of body data
+    # <pre class="prettyprint language-json" data-type="json">
+    # <code>
+    #   entity: 'servers',
+    #   query: '{"applications._id":"5be890af9150068433a0a53d"}',
+    #   body: '{"applications.$.name":"www3a"}'
+    #  </code>
+    # </pre>
 
     # @apiSuccessExample {json} Success-Response:
     # HTTP/1.1 200 OK
@@ -28,8 +39,11 @@ class SyncApp(Resource):
     #     }
     # }
 
+    @private_auth
     def post(self):
         valid = syncValidate().validate()
+
+
 
         if valid:
             try:

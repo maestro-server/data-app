@@ -1,4 +1,6 @@
 from flask_restful import Resource
+
+from app.decorators.private_auth import private_auth
 from app.validate.connValidate import connValidate
 from app.repository.connections import Connections
 
@@ -17,7 +19,7 @@ class ConnectionApp(Resource):
     #     'name': (Number)
     # }]
 
-
+    @private_auth
     def get(self, instance):
         return Connections(instance).get()
 
@@ -38,7 +40,7 @@ class ConnectionApp(Resource):
     #     'task': (string)
     # }]
 
-
+    @private_auth
     def post(self, instance):
         valid = connValidate().validate()
 

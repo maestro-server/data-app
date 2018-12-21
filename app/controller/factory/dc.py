@@ -4,12 +4,16 @@ from math import ceil
 from flask import request
 from flask_restful import Resource
 from pydash import defaults, has, map_values_deep, omit
+
+from app.decorators.private_auth import private_auth
 from app.libs.deepUpdateForMongo import updaterIds
 from app.services.filter import FilterAPI
 from app.error.factoryInvalid import FactoryInvalid
 
 
 class DcApp(Resource):
+
+    @private_auth
     def get(self):
         req = request.args.to_dict()
 
@@ -47,6 +51,7 @@ class DcApp(Resource):
             'items': self.entity().getAll(args, limit, skip)
         }
 
+    @private_auth
     def post(self):
         req = request.get_json(force=True)
         pagination = defaults(
@@ -76,6 +81,7 @@ class DcApp(Resource):
             'items': self.entity().getAll(args, limit, skip)
         }
 
+    @private_auth
     def put(self):
         data = request.get_json(force=True)
 
