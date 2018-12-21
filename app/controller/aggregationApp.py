@@ -2,11 +2,12 @@ import json
 from flask_restful import Resource
 from pydash import map_values_deep, has
 
-from app.decorators.private_auth import private_auth
 from app.repository.aggregate import Aggregate
 from app.libs.deepUpdateForMongo import updaterIds
 from app.error.factoryInvalid import FactoryInvalid
+from app.services.privateAuth import private_auth
 from app.validate.aggregateValidate import aggregateValidate
+
 
 
 class AggregationApp(Resource):

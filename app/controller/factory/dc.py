@@ -5,10 +5,10 @@ from flask import request
 from flask_restful import Resource
 from pydash import defaults, has, map_values_deep, omit
 
-from app.decorators.private_auth import private_auth
 from app.libs.deepUpdateForMongo import updaterIds
 from app.services.filter import FilterAPI
 from app.error.factoryInvalid import FactoryInvalid
+from app.services.privateAuth import private_auth
 
 
 class DcApp(Resource):

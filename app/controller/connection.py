@@ -1,6 +1,6 @@
 from flask_restful import Resource
 
-from app.decorators.private_auth import private_auth
+from app.services.privateAuth import private_auth
 from app.validate.connValidate import connValidate
 from app.repository.connections import Connections
 

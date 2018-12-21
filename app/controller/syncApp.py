@@ -5,7 +5,7 @@ from app.libs.deepUpdateForMongo import updaterIds
 from app.repository.model import Model
 from app.error.factoryInvalid import FactoryInvalid
 from app.validate.syncValidate import syncValidate
-from app.decorators.private_auth import private_auth
+from app.services.privateAuth import private_auth
 
 
 class SyncApp(Resource):
