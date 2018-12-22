@@ -1,5 +1,4 @@
 
-from app import app
 from flask_restful import Resource
 from app.libs.appInfo import appInfo
 

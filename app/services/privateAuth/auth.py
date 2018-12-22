@@ -1,16 +1,15 @@
 import jwt
 from app import app
 from flask import request
-from app.libs.appInfo import appInfo
-from app.error.privateUnauthorized import PrivateUnauthorizedError
+from app.services.privateAuth.error.privateUnauthorized import PrivateUnauthorizedError
 
 
 class PrivateAuth(object):
-
     @staticmethod
     def autheticate():
-
+        auth_token = None
         auth_header = request.headers.get('Authorization')
+
         if auth_header:
             auth_token = auth_header.split(" ")[1]
 
@@ -24,17 +23,17 @@ class PrivateAuth(object):
 
     @staticmethod
     def create_token(info):
-
         body = {
-            noauth: app.config['NOAUTH']
-        };
+            **info,
+            'noauth': app.config['NOAUTH']
+        }
 
-        return PrivateAuth.encode({**info, **body})
+        return PrivateAuth.encode(body)
 
     @staticmethod
     def encode(body):
-        return jwt.encode(body, app.config['SECRETJWT_PRIVATE'], algorithms=['HS256'])
+        return jwt.encode(body, app.config['SECRETJWT_PRIVATE'], algorithm='HS256').decode('utf-8')
 
     @staticmethod
     def decode(encoded):
-       return jwt.decode(encoded, app.config['SECRETJWT_PRIVATE'], algorithms=['HS256'])
+        return jwt.decode(encoded, app.config['SECRETJWT_PRIVATE'], algorithms=['HS256'])

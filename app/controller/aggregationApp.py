@@ -11,22 +11,29 @@ from app.validate.aggregateValidate import aggregateValidate
 
 
 class AggregationApp(Resource):
+    """
+    @api {post} /aggregate> 1. Execute aggregate query
+    @apiName PostAggregate
+    @apiGroup Aggregate
 
-    # @api {post} /aggregate> 1. Execute aggregate query
-    # @apiName PostAggregate
-    # @apiGroup Aggregate
+    @apiParam (Body x-www) {String} entity Table name (Ex. server, applications, clients, system)
+    @apiParam (Body x-www) {Json} query Aggregation query (See, mongodb aggregate for more information)
 
-    # @apiParam (Body x-www) {String} entity Table name (Ex. server, applications, clients, system)
-    # @apiParam (Body x-www) {Json} query Aggregation query (See, mongodb aggregate for more information)
+    @apiPermission JWT Private (MAESTRO_SECRETJWT_PRIVATE)
+    @apiHeader (Header) {String} Authorization JWT {Token}
 
-    # @apiSuccessExample {json} Success-Response:
-    # HTTP/1.1 200 OK
-    # {
-    #     'items': [
-    #         {
-    #         }
-    #     ]
-    # }
+    @apiError (Error) PermissionError Token don`t have permission
+    @apiError (Error) Unauthorized Invalid Token
+
+    @apiSuccessExample {json} Success-Response:
+    HTTP/1.1 200 OK
+    {
+        'items': [
+            {
+            }
+        ]
+    }
+    """
 
     @private_auth
     def post(self):
