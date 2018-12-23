@@ -88,14 +88,29 @@ class DcApp(Resource):
         objToPut = []
 
         for item in data['body']:
-            objId = item.get('_id')
-            objId = self.entity().makeObjectId(objId)
+            filters = self.makeFilter(item)
 
             item = omit(item, ['_id', 'updated_at'])
             item = map_values_deep(item, updaterIds)
 
             objToPut.append({
-                'filter': objId,
+                'filter': filters,
                 'data': item
             })
+
         return self.entity().batch_process(objToPut)
+
+    def makeFilter(self, item):
+        opts = ['_id', 'unique_id']
+        filter = {}
+
+        for opt in opts:
+            if (opt in item):
+                data = item.get(opt)
+
+                if (opt == '_id'):
+                    data = self.entity().castObjectId(data)
+
+                filter[opt] = data
+
+        return filter

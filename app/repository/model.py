@@ -50,7 +50,7 @@ class Model(object):
             
             if item['filter']:
                 args = Model.reservedWordMongo(obj)
-                cal = UpdateOne(item['filter'], args)
+                cal = UpdateOne(item['filter'], args, upsert=True)
             else:
                 obj = {**Model.makeDateAt(key='created_at'), **obj}
                 cal = InsertOne(obj)
@@ -58,7 +58,7 @@ class Model(object):
             requests.append(cal)
 
         try:
-            result = self.col.bulk_write(requests)
+            result = self.col.bulk_write(requests, ordered=False)
         except BulkWriteError as bwe:
             print(bwe.details)
             raise
