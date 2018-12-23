@@ -19,7 +19,7 @@ class MongoTests(unittest.TestCase):
 
     def test_simple_request(self):
         response = self.app.get('/servers?query=%27{}%27', follow_redirects=True)
-        self.assertEqual(response.status_code, 422)
+        self.assertEqual(response.status_code, 401)
 
 
 if __name__ == "__main__":
