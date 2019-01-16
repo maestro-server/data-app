@@ -85,7 +85,7 @@ apidoc -i app/controller/ -o docs/
 |------------------------------|--------------------------|--------------------------------------------|
 | MAESTRO_PORT                 | 5010                     | port used                                  |
 | MAESTRO_GWORKERS             | 2 | DB string connection | Gunicorn multi process                     |
-| MAESTRO_MONGO_URI            | localhost                | MongoDB URL                                |
+| MAESTRO_MONGO_URI            | mongodb://localhost      | MongoDB URL                                |
 | MAESTRO_MONGO_DATABASE       | maestro-client           | Database name                              |
 | MAESTRO_SCAN_QTD             | 200                      | Prefetch limit                             |
 |                              |                          |                                            |

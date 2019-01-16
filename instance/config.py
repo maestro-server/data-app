@@ -13,7 +13,7 @@ load_dotenv(find_dotenv())
 
 class Config(object):
     TESTING = os.environ.get("TESTING", False)
-    DATABASE_URI = "mongodb://" + os.environ.get("MAESTRO_MONGO_URI", "localhost")
+    DATABASE_URI = os.environ.get("MAESTRO_MONGO_URI", "mongodb://localhost")
     DATABASE_NAME = os.environ.get("MAESTRO_MONGO_DATABASE", "maestro-client")
     RESTFUL_JSON = {'cls': DateTimeEncoder}
 
