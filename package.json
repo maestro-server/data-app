@@ -1,6 +1,6 @@
 {
   "name": "data-maestro",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "Flask, data layer service",
   "main": "run.py",
   "scripts": {
