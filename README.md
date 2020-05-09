@@ -17,20 +17,17 @@ To test out the demo, [Demo Online](http://demo.maestroserver.io "Demo Online")
 
 # Maestro Server - Data Layer API #
 
-Microservice data layer.
+Data app is a gateway connection to the mongodb.
 
-Core API, organized by modules:
+* CRUD database operations
 
-* API Rest
-* Controller
-* Repository
-* Services
+Data app use `Flask <http://flask.pocoo.org>`_,  on python >3.5.
 
 ## TechStack ##
 * Python <3.4
 * Flask
 
-## Service relations ##
+## Connect to: ##
 None
 
 ## Setup #
