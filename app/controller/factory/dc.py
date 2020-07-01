@@ -112,5 +112,6 @@ class DcApp(Resource):
                     data = self.entity().castObjectId(data)
 
                 filter[opt] = data
+                break
 
         return filter
