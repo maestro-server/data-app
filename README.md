@@ -1,5 +1,5 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d8b11776962a4867a491c7a039c250ec)](https://www.codacy.com/app/maestro/data-app?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=maestro-server/data-app&amp;utm_campaign=Badge_Grade)
-[![Build Status](https://travis-ci.org/maestro-server/data-app.svg?branch=master)](https://travis-ci.org/maestro-server/data-app)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/facb8140aef846768f20732da29c5ada)](https://www.codacy.com/gh/maestro-server/data-app/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=maestro-server/data-app&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.com/maestro-server/data-app.svg?branch=master)](https://travis-ci.com/maestro-server/data-app)
 [![Maintainability](https://api.codeclimate.com/v1/badges/0d6930d08ca210a9e46e/maintainability)](https://codeclimate.com/github/maestro-server/data-app/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/0d6930d08ca210a9e46e/test_coverage)](https://codeclimate.com/github/maestro-server/data-app/test_coverage)
 [![Coverage Status](https://coveralls.io/repos/github/maestro-server/data-app/badge.svg?branch=master)](https://coveralls.io/github/maestro-server/data-app?branch=master)
