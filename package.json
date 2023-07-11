@@ -27,6 +27,6 @@
   },
   "homepage": "https://github.com/maestro-server/data-api#readme",
   "dependencies": {
-    "apidoc": "^0.17.6"
+    "apidoc": "^1.0.3"
   }
 }
